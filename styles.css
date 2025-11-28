@@ -1,0 +1,136 @@
+:root {
+  --glass: rgba(255, 255, 255, 0.08);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  background-image: linear-gradient(to bottom right, #eef2ff, #e0e7ff);
+}
+
+.dark body,
+.dark\:bg {
+  background-image: linear-gradient(to bottom right, #0b1220, #111827);
+}
+
+.glassmorphism {
+  background: #ffffff26;
+  border: 1px solid #ffffff33;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glassmorphism-dark {
+  background: #00000040;
+  border: 1px solid #ffffff26;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.tooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  color: #fff;
+  text-align: center;
+  z-index: 50;
+  opacity: 0;
+  white-space: nowrap;
+  background-color: #000000e6;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: opacity 0.2s, visibility 0.2s;
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip .tooltip-text::after {
+  content: "";
+  border: 5px solid transparent;
+  border-bottom-color: #000000e6;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes panSlow {
+  0% {
+    transform: translate(0, 0) scale(1.06);
+  }
+  50% {
+    transform: translate(-3%, -2%) scale(1.06);
+  }
+  100% {
+    transform: translate(0, 0) scale(1.06);
+  }
+}
+
+/* Ensure layering over video */
+#home {
+  position: relative;
+}
+
+#home .hero-video {
+  z-index: 0;
+  animation: panSlow 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+#home .overlay {
+  z-index: 10;
+}
+
+#home .content {
+  z-index: 30;
+}
+
+.signature {
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 0.5px;
+}
+
+/* 3D helpers for card */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.card-3d {
+  transform: translateZ(0);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: translateZ(36px) scale(1.06);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
